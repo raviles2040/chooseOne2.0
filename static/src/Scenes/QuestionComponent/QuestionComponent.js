@@ -23,7 +23,7 @@ class QuestionComponent extends Component {
     createQuestion = (e) => {
         e.preventDefault()
         debugger
-        const data = new FormData()
+        const data = new FormData();
         const option1 = this.state.questionData.option1
         const option2 = this.state.questionData.option2
         data.append('option1', option1, option1.fileName)
