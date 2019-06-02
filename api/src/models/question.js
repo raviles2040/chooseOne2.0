@@ -13,7 +13,6 @@ const QuestionSchema = new Schema({
         image: String,
         votes: Number
     }, required: true}
-
 });
 
 module.exports = mongoose.model('Question', QuestionSchema);
