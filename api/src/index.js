@@ -1,10 +1,15 @@
 // Importamos express para facilitarnos crear el servidor y realizar llamadas HTTP
 const express = require('express');
 const path = require('path');
+const bodyParser= require('body-parser')
+
+global.appRoot = path.resolve(__dirname);
 
 const { mongoose } = require('./database');
 
 const app = express();
+app.use(bodyParser.urlencoded({extended: true}))
+app.use('/img', express.static(__dirname + '/uploads'));
 
 // Settings
 app.set('port', process.env.PORT || 3000);

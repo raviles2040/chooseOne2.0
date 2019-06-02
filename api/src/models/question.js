@@ -12,7 +12,8 @@ const QuestionSchema = new Schema({
         title: String,
         image: String,
         votes: Number
-    }, required: true}
+    }, required: true},
+    createdBy: {type: String, required: true}
 });
 
 module.exports = mongoose.model('Question', QuestionSchema);
