@@ -27,6 +27,7 @@ app.use(function(req, res, next) {
 
 //Routes
 app.use('/api/questions', require('./routes/question.routes'));
+app.use('/api/user', require('./routes/user.routes'));
 
 // Starting the server
 app.listen(app.get('port'), () => {
