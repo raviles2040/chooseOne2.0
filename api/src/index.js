@@ -9,7 +9,7 @@ const { mongoose } = require('./database');
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}))
-app.use('/images', express.static(__dirname + '/uploads'));
+app.use('/img', express.static(__dirname + '/uploads'));
 
 // Settings
 app.set('port', process.env.PORT || 3000);
