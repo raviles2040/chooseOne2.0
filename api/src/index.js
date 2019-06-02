@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use('/img', express.static(__dirname + '/uploads'));
 
 // Settings
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 
 // Middlewares
 app.use(express.json());
