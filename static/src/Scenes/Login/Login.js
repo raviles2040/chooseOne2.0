@@ -3,6 +3,7 @@ import utils from '../../Components/Utils/utils'
 import axios from 'axios'
 import { validateAll } from 'indicative'
 import { Redirect } from 'react-router-dom'
+import { SnackbarProvider, withSnackbar } from 'notistack'
 
 class Login extends Component {
     constructor (props) {
@@ -55,12 +56,23 @@ class Login extends Component {
         const data = {...this.state.userData}
         axios.post('http://localhost:3001/api/user/', data)
             .then(result => {
-                this.props.setUserData(result.data)
+                if (result.data === null) {
+                    this.setState({
+                        loader: null
+                    })
+                    return this.showMessage('Ha ocurrido un error', 'error')
+                }
+                this.showMessage('Bievenido ' + result.data.username, 'success')
+                this.props.setUserData.setUserData(result.data)
                 this.setState({
                     route: <Redirect to="/"/>
                 })
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                this.setState({
+                    loader: null
+                })
+            })
 
     }
 
@@ -81,7 +93,13 @@ class Login extends Component {
         const data = this.state.userData
         axios.post('http://localhost:3001/api/user/login', data)
             .then(result => {
-                    this.props.setUserData(result.data);
+                    if (result.data === null) {
+                        this.setState({
+                            loader: null
+                        })
+                        return this.showMessage('Ha ocurrido un error', 'error')
+                    }
+                    this.props.setUserData.setUserData(result.data)
                     this.setState({
                         route: <Redirect to="/"/>
                     })
@@ -89,7 +107,6 @@ class Login extends Component {
             )
             .catch(error => console.log(error))
     }
-
 
     createCountHandler = () => {
         this.setState(prevState => ({
@@ -170,4 +187,14 @@ class Login extends Component {
     }
 }
 
-export default Login
+const MySceneLogin = withSnackbar(Login)
+
+function IntegrationNotistack (props) {
+    return (
+        <SnackbarProvider maxSnack={8}>
+            <MySceneLogin setUserData={props}/>
+        </SnackbarProvider>
+    )
+}
+
+export default IntegrationNotistack
