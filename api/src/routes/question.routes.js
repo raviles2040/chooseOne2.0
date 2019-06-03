@@ -40,14 +40,29 @@ router.post('/', async (req, res) => {
     // res.json({status: 'Question Saved'});
 });
 
-router.put('/img', upload.single('file'), (req, res, next) => {
+router.put('/img/:id/opt1', upload.single('file'), async (req, res, next) => {
     const file = req.file
     if (!file) {
       const error = new Error('Please upload a file')
       error.httpStatusCode = 400
       return next(error)
     }
-      res.send(file);
+    await Question.findByIdAndUpdate(req.params.id, { $set: { 'optionOne.image' : file.filename}});
+    res.send(file);
+});
+
+router.put('/img/:id/opt2', upload.single('file'), async (req, res, next) => {
+    const file = req.file
+    if (!file) {
+      const error = new Error('Please upload a file')
+      error.httpStatusCode = 400
+      return next(error)
+    }
+     var question = await Question.findByIdAndUpdate(req.params.id, { $set: { 'optionTwo.image' : file.filename}});
+    res.json({
+        image: file,
+        question : question
+    });
 });
 
 router.put('/:id', async (req, res) => {
