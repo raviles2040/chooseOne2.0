@@ -7,7 +7,6 @@ class QuestionComponent extends Component {
         super()
         this.state = {
             questionData: {},
-            selectedFile: null,
             loaded: 0
         }
     }
@@ -47,7 +46,7 @@ class QuestionComponent extends Component {
         return (
             <div id="container">
                 <div>
-                    <h1>Crear pregunta </h1>
+                    <h1 className="mt-5">Crear pregunta </h1>
                     <div className="form-grup">
                         <input className="form-control" type="password" placeholder="Pregunta" type="text"
                                name="questionTitle"

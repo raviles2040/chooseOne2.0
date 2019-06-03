@@ -13,12 +13,18 @@ export default class RandomQuestions extends React.Component {
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-6">
-                    <img className="img-thumbnail img-fluid" alt="Bootstrap Image Preview" src="http://www.winterchess.com/fotos/jugadores/90-ponce.jpg" />
+                <div className="col-2"></div>
+                <div className="col-8">
+                    <div className="row">
+                        <div className="col-md-6">
+                            <img className="img-thumbnail img-fluid" alt="Bootstrap Image Preview" src="http://www.winterchess.com/fotos/jugadores/90-ponce.jpg" />
+                        </div>
+                        <div className="col-md-6">
+                            <img className="img-thumbnail img-fluid" alt="Bootstrap Image Preview" src="http://www.winterchess.com/fotos/jugadores/97-ponce.jpg" />
+                        </div>
+                    </div>
                 </div>
-                <div className="col-md-6">
-                <img className="img-thumbnail img-fluid" alt="Bootstrap Image Preview" src="http://www.winterchess.com/fotos/jugadores/97-ponce.jpg" />
-                </div>
+                <div className="col-2"></div>
             </div>
         </div>
       );
