@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import utils from '../../Components/Utils/utils'
 import axios from 'axios'
 import { validateAll } from 'indicative'
+import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
     constructor (props) {
@@ -52,6 +53,14 @@ class Login extends Component {
 
     registerHandler = () => {
         const data = {...this.state.userData}
+        axios.post('http://localhost:3001/api/user/', data)
+            .then(result => {
+                this.props.setUserData(result.data)
+                this.setState({
+                    route: <Redirect to="/"/>
+                })
+            })
+            .catch(error => console.log(error))
 
     }
 
@@ -70,7 +79,15 @@ class Login extends Component {
         utils.showLoader(this)
         event.preventDefault()
         const data = this.state.userData
-
+        axios.post('http://localhost:3001/api/user/login', data)
+            .then(result => {
+                    this.props.setUserData(result.data);
+                    this.setState({
+                        route: <Redirect to="/"/>
+                    })
+                }
+            )
+            .catch(error => console.log(error))
     }
 
 
@@ -145,6 +162,7 @@ class Login extends Component {
         return (
             <div id="container">
                 {this.state.loader}
+                {this.state.route}
                 {!this.state.showLogin && showRegister}
                 {this.state.showLogin && showLogin}
             </div>
