@@ -34,17 +34,12 @@ router.get('/:id', async (req, res) => {
 
 // 1 post de user { email username password}
 router.post('/', async (req, res) => {
-    var userCreated;
-    User.create(req.body.user, function(err, doc) {
-        userCreated = doc;
-    });
-    res.json({
-        status: 'User Saved',
-        data : userCreated
-    });
-    console.log("TCL: res", res.data)
-
-    
+    const userCreated = new User(req.body);
+    userCreated.save(err => {
+        if (err) return res.status(500).send(err);
+        return res.status(200).send(userCreated);
+    })
+        
 });
 
 router.post('/login',async (req, res) => {
