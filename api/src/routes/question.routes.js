@@ -29,10 +29,15 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const { question, optionOne, optionTwo } = req.body;
-    const pregunta = new Question({ question, optionOne, optionTwo });
-    await pregunta.save();
-    res.json({status: 'Question Saved'});
+    const { question, optionOne, optionTwo, createdBy } = req.body;
+    optionOne.image = 'default-img.png';
+    optionTwo.image = 'default-img.png';
+    const pregunta = new Question({ question, optionOne, optionTwo, createdBy });
+    await pregunta.save(err => {
+        if (err) return res.status(500).send(err);
+        return res.status(200).send(pregunta);
+    });
+    // res.json({status: 'Question Saved'});
 });
 
 router.put('/img', upload.single('file'), (req, res, next) => {
