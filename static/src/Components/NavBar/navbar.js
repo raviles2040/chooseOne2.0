@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function MenuAppBar() {
+function MenuAppBar(props) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -73,9 +73,10 @@ function MenuAppBar() {
                 open={open}
                 onClose={handleClose}
               >
-                <NavLink to="/Login"><MenuItem className={classes.link} onClick={handleClose}>Login</MenuItem></NavLink>
-                <NavLink to="/QuestionComponent"><MenuItem onClick={handleClose}>Crea preguntas</MenuItem></NavLink>
-                <NavLink to="/Play"><MenuItem onClick={handleClose}>Juega Ya</MenuItem></NavLink>
+                  {!props.userIsLoged &&  <NavLink to="/Login"><MenuItem className={classes.link} onClick={handleClose}>Login</MenuItem></NavLink> }
+                  {props.userIsLoged && <NavLink to="/QuestionComponent"><MenuItem onClick={handleClose}>Crea preguntas</MenuItem></NavLink> }
+                  {props.userIsLoged && <NavLink to="/Play"><MenuItem onClick={handleClose}>Juega Ya</MenuItem></NavLink>}
+                  {props.userIsLoged && <NavLink to="/"><MenuItem onClick={props.closeSession}>Cerrar sessión</MenuItem></NavLink>}
               </Menu>
             </div>
           )}
