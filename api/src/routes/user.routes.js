@@ -28,15 +28,30 @@ var storage = multer.diskStorage({
 });
 
 router.get('/:id', async (req, res) => {
-    const user = await Question.findById(req.params.id);
+    const user = await User.findById(req.params.id);
     res.json(user);
 });
 
+// 1 post de user { email username password}
 router.post('/', async (req, res) => {
-    User.create(req.body.user);
-    res.json({status: 'User Saved'});
+    var userCreated;
+    User.create(req.body.user, function(err, doc) {
+        userCreated = doc;
+    });
+    res.json({
+        status: 'User Saved',
+        data : userCreated
+    });
+    console.log("TCL: res", res.data)
+
+    
 });
 
+router.post('/login',async (req, res) => {
+    const user = await User.findOne({ username: req.body.username, password: req.body.password});
+    res.json(user);
+});
+// 2 si hay avatar _id
 router.put('/avatar/:id', upload.single('file'), (req, res, next) => {
     var id = req.params.id;
     const file = req.file
