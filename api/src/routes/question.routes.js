@@ -43,7 +43,7 @@ router.put('/img', upload.single('file'), (req, res, next) => {
       return next(error)
     }
       res.send(file);
-})
+});
 
 router.put('/:id', async (req, res) => {
     const { question, optionOne, optionTwo } = req.body;

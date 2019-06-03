@@ -1,18 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default class Home extends React.Component {
 
     render() {
       return (
-        <div className="container-fluid">
-
-            <div className="row">
-                <div className="col-md-12">
-                    <h1 className="mb-2 mt-2 ">
-                        Bienvenido a ChooseOne 2.0
-                    </h1>
-                </div>
-            </div>
+        <div className="container-fluid mt-3">
             <div className="row">
                 <div className="col-2"></div>
                 <div className="col-8">
@@ -50,7 +43,7 @@ export default class Home extends React.Component {
                             <img className="img-fluid rounded img-thumbnail" alt="Bootstrap Image Preview" src="http://escacsbalears.org/wp-content/uploads/2012/11/Adrian-Ponce.jpg" />
                         </div>  
                     </div>
-                    <button type="button" className="btn btn-primary btn-lg btn-block mb-4 mt-4">¡Entra a jugar!</button>
+                    <NavLink to="/Play"><button type="button" className="btn btn-primary btn-lg btn-block mb-4 mt-4">¡Entra a jugar!</button></NavLink>
                 </div>
                 <div className="col-2"></div>
             </div>
