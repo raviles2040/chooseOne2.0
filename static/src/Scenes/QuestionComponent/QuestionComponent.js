@@ -47,7 +47,7 @@ submitHandle = (e)=>{
         .catch(err => {
         console.log(err);  
     })
-
+    alert('¡PREGUNTA ENVIADA CON ÉXITO!');
 };
 
 handleChange(e) {
