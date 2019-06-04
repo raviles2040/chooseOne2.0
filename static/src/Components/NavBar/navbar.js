@@ -75,8 +75,8 @@ function MenuAppBar(props) {
               >
                   {!props.userIsLoged &&  <NavLink to="/Login"><MenuItem className={classes.link} onClick={handleClose}>Login</MenuItem></NavLink> }
                   {props.userIsLoged && <NavLink to="/QuestionComponent"><MenuItem onClick={handleClose}>Crea preguntas</MenuItem></NavLink> }
-                  {props.userIsLoged && <NavLink to="/Play"><MenuItem onClick={handleClose}>Juega Ya</MenuItem></NavLink>}
-                  {props.userIsLoged && <NavLink to="/"><MenuItem onClick={props.closeSession}>Cerrar sessión</MenuItem></NavLink>}
+                  {props.userIsLoged && <NavLink to="/RandomQuestions"><MenuItem onClick={handleClose}>Juega Ya</MenuItem></NavLink>}
+                  {props.userIsLoged && <NavLink to="/"><MenuItem onClick={() => props.closeSession(handleClose)}>Cerrar sessión</MenuItem></NavLink>}
               </Menu>
             </div>
           )}

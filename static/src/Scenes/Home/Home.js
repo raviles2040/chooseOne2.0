@@ -43,7 +43,6 @@ export default class Home extends React.Component {
                             <img className="img-fluid rounded img-thumbnail" alt="Bootstrap Image Preview" src="http://escacsbalears.org/wp-content/uploads/2012/11/Adrian-Ponce.jpg" />
                         </div>  
                     </div>
-                    <NavLink to="/Play"><button type="button" className="btn btn-primary btn-lg btn-block mb-4 mt-4">¡Entra a jugar!</button></NavLink>
                 </div>
                 <div className="col-2"></div>
             </div>

@@ -1,9 +1,10 @@
 import React,{Component} from 'react'
 import './App.css'
 import Login from './Scenes/Login/Login'
-import MenuAppBar from './Components/Navbar/navbar'
+import MenuAppBar from './Components/NavBar/navbar'
 import Home from './Scenes/Home/Home'
 import QuestionComponent from './Scenes/QuestionComponent/QuestionComponent'
+import RandomQuestions from './Scenes/LoadQuestions/RandomQuestions'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 
 class App extends Component {
@@ -23,10 +24,11 @@ class App extends Component {
     getUserData = () => {
         return this.state.userData
     };
-    closeSession = () => {
+    closeSession = (callback) => {
         this.setState({
             userData: {username: ''}
         })
+        callback();
     };
     render() {
         let userIsLoged = this.state.userData.username !== '';
