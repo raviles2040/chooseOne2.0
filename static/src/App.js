@@ -4,7 +4,7 @@ import Login from './Scenes/Login/Login'
 import MenuAppBar from './Components/NavBar/navbar'
 import Home from './Scenes/Home/Home'
 import QuestionComponent from './Scenes/QuestionComponent/QuestionComponent'
-import RandomQuestions from './Scenes/LoadQuestions/RandomQuestions'
+// import RandomQuestions from './Scenes/LoadQuestions/RandomQuestions'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 
 class App extends Component {

@@ -11,8 +11,7 @@ class QuestionComponent extends Component {
             title2: '',
             img1: <img alt="" height="320" width="300" id="img1" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
             img2: <img alt="" height="320" width="300" id="img2" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
-            votes: 0,
-            createdBy: 'Fulano'
+            votes: 0
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -31,7 +30,7 @@ submitHandle = (e)=>{
             image: this.state.img2.props.src,
             votes: this.state.votes
         },
-        createdBy: this.state.createdBy
+        createdBy: this.props.getUserData()._id
     }
     axios.post('http://localhost:3001/api/questions', data)
         .then(res => {
@@ -42,9 +41,7 @@ submitHandle = (e)=>{
                 title2: '',
                 img1: <img alt="" height="320" width="300" id="img1" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
                 img2: <img alt="" height="320" width="300" id="img2" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
-                votes: 0,
-                createdBy: 'Fulano',
-                _id: ''
+                votes: 0
             })
         })
         .catch(err => {
