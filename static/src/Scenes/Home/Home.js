@@ -1,15 +1,15 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 export default class Home extends React.Component {
 
     render() {
+
       return (
         <div className="container-fluid mt-3">
             <div className="row">
                 <div className="col-2"></div>
                 <div className="col-8">
-                    <img className="img-fluid rounded imgBanner" alt="Bootstrap Image Preview" src="https://www.acurax.com/wp-content/themes/acuraxsite/images/inner_page_bnr.jpg?x26444" />
+                    <img className="img-fluid rounded imgBanner" alt="Bootstrap Image Preview" src="http://www.muftiimran.com/wp-content/uploads/2017/03/Sawaal-Kariye-Aur-Jawaab-Haasil-Kariye-1000x200.png" />
                     <h2 className="mt-3 text-left text-primary">
                         Hola traviesos y traviesas
                     </h2>
@@ -30,20 +30,19 @@ export default class Home extends React.Component {
                         <div className="col-4 text-left" >
                             <h3 className="text-primary">Regístrate</h3>
                             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            <img className="img-fluid rounded img-thumbnail" alt="Bootstrap Image Preview" src="http://escacsbalears.org/wp-content/uploads/2012/11/Adrian-Ponce.jpg" />
+                            <img className="img-fluid rounded img-thumbnail" alt="Bootstrap Image Preview" width= "330" height="330" src="https://i.pinimg.com/originals/26/bb/4f/26bb4f08d445790b80e7a1d90dfb65ab.gif" />
                         </div>
                         <div className="col-4 text-left" >
                             <h3 className="text-primary">Sube tus preguntas</h3>
                             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            <img className="img-fluid rounded img-thumbnail" alt="Bootstrap Image Preview" src="http://escacsbalears.org/wp-content/uploads/2012/11/Adrian-Ponce.jpg" />
+                            <img className="img-fluid rounded img-thumbnail" alt="Bootstrap Image Preview" width= "330" height="330" src="https://media.giphy.com/media/GZd8nPH3TcNSU/giphy.gif" />
                         </div> 
                         <div className="col-4 text-left" >
                             <h3 className="text-primary">Comienza a jugar</h3>
                             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            <img className="img-fluid rounded img-thumbnail" alt="Bootstrap Image Preview" src="http://escacsbalears.org/wp-content/uploads/2012/11/Adrian-Ponce.jpg" />
+                            <img className="img-fluid rounded img-thumbnail" alt="Bootstrap Image Preview" width= "330" height="330" src="https://blog.socialgest.net/wp-content/uploads/2017/07/SOCIALGEST-GIF-SOCIALGEST-1.gif" />
                         </div>  
                     </div>
-                    <NavLink to="/Play"><button type="button" className="btn btn-primary btn-lg btn-block mb-4 mt-4">¡Entra a jugar!</button></NavLink>
                 </div>
                 <div className="col-2"></div>
             </div>
