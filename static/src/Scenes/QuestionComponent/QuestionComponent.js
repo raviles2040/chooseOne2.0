@@ -9,9 +9,10 @@ class QuestionComponent extends Component {
             question: '',
             title1: '',
             title2: '',
-            img1: <img alt="" height="320" width="300" id="img1" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
-            img2: <img alt="" height="320" width="300" id="img2" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
-            votes: 0
+            img1: <img alt="" height="300" width="320" id="img1" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
+            img2: <img alt="" height="300" width="320" id="img2" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
+            votes: 0,
+            id: ''
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -39,10 +40,12 @@ submitHandle = (e)=>{
                 question: '',
                 title1: '',
                 title2: '',
-                img1: <img alt="" height="320" width="300" id="img1" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
-                img2: <img alt="" height="320" width="300" id="img2" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
-                votes: 0
+                img1: <img alt="" height="300" width="320" id="img1" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
+                img2: <img alt="" height="300" width="320" id="img2" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
+                votes: 0,
+                id: res.data._id
             })
+            axios.put(`http://localhost:3001/api/questions/img/${this.state.id}/op1`, )
         })
         .catch(err => {
         console.log(err);  
@@ -72,8 +75,6 @@ readImage = e => {
         reader.readAsDataURL(e.target.files[0]);
     }
 }
-
-
 
     render () {
         return (
