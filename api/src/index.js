@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser= require('body-parser')
+var cors = require('cors') 
 
 global.appRoot = path.resolve(__dirname);
 
@@ -24,6 +25,7 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
      next();
 });
+app.use(cors());
 
 //Routes
 app.use('/api/questions', require('./routes/question.routes'));

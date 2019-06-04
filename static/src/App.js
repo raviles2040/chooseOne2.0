@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import './App.css'
 import Login from './Scenes/Login/Login'
-import MenuAppBar from './Components/Navbar/navbar'
+import MenuAppBar from './Components/NavBar/navbar'
 import Home from './Scenes/Home/Home'
 import QuestionComponent from './Scenes/QuestionComponent/QuestionComponent'
 import RandomQuestions from './Scenes/LoadQuestions/RandomQuestions'
@@ -42,7 +42,7 @@ class App extends Component {
                     {userIsLoged && <Route exact path='/QuestionComponent' render={() =>
                         <QuestionComponent getUserData={this.getUserData}/>
                     }/>}
-                     {!userIsLoged && <Route exact path='/RandomQuestions' component={Question}/>}
+                    {!userIsLoged && <Route exact path='/RandomQuestions' component={Question}/>}
                     {userIsLoged && <Route exact path='/RandomQuestions' render={() =>
                         <Question getUserData={this.getUserData}/>
                     }/>}

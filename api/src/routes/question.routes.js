@@ -41,6 +41,7 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/img/:id/opt1', upload.single('file'), async (req, res, next) => {
+    console.log(req.file);
     const file = req.file
     if (!file) {
       const error = new Error('Please upload a file')
@@ -52,6 +53,7 @@ router.put('/img/:id/opt1', upload.single('file'), async (req, res, next) => {
 });
 
 router.put('/img/:id/opt2', upload.single('file'), async (req, res, next) => {
+    console.log(req.file);
     const file = req.file
     if (!file) {
       const error = new Error('Please upload a file')

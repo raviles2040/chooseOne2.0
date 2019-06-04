@@ -11,7 +11,8 @@ class QuestionComponent extends Component {
             title2: '',
             img1: <img alt="" height="320" width="300" id="img1" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
             img2: <img alt="" height="320" width="300" id="img2" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
-            votes: 0
+            votes: 0,
+            imgs: []
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -35,6 +36,9 @@ submitHandle = (e)=>{
     axios.post('http://localhost:3001/api/questions', data)
         .then(res => {
             console.log(res);  
+           
+            this.saveImage('opt1', res.data._id,this.state.imgs[0])
+            this.saveImage('opt2', res.data._id, this.state.imgs[1])
             this.setState({
                 question: '',
                 title1: '',
@@ -49,6 +53,20 @@ submitHandle = (e)=>{
     })
     alert('¡PREGUNTA ENVIADA CON ÉXITO!');
 };
+
+saveImage = (option, id,file) => {
+    const url = `http://localhost:3001/api/questions/img/${id}/${option}`;
+   
+    const formData = new FormData();
+    formData.append('file',file)
+    axios.put(url, formData)
+    .then(result => {
+       
+    })
+    .catch(error => {
+       
+    })
+}
 
 handleChange(e) {
     const { name, value } = e.target;
@@ -70,6 +88,11 @@ readImage = e => {
         };
 
         reader.readAsDataURL(e.target.files[0]);
+        const imgs = [...this.state.imgs]
+        imgs.push(e.target.files[0])
+        this.setState({
+            imgs
+        })
     }
 }
 
