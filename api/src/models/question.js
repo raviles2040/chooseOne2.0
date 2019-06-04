@@ -6,12 +6,12 @@ const QuestionSchema = new Schema({
     optionOne: {type: {
         title: String,
         image: String,
-        votes: Number
+        votes: {type: Number , default:0}
     }, required: true},
     optionTwo: {type: {
         title: String,
         image: String,
-        votes: Number
+        votes: {type: Number , default:0}
     }, required: true},
     createdBy: {type: String, required: true}
 });

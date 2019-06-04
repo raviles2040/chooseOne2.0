@@ -26,13 +26,14 @@ class Question extends Component {
 
     voteHandler = (e) => {
         let currentTarget = e.target.name
-        let option = e.target.getAttribute('option') === '1' ? 'optionOne': 'optionTwo';
+        let opt = e.target.getAttribute('option') === '1' ? 'optionOne': 'optionTwo';
         let  questionData = this.state.questions.filter(element => element._id === currentTarget)
 
-        questionData[0][option].votes = questionData[0][option].votes + 1;
-        axios.put('http://localhost:3001/api/questions/' + currentTarget, questionData)
+        questionData[0][opt].votes = questionData[0][opt].votes + 1;
+        axios.put('http://localhost:3001/api/questions/' + currentTarget, opt )
             .then(
                 result => {
+                    debugger;
                     this.setState(prevState => ({
                         index: prevState.index +1
                         })
@@ -67,7 +68,7 @@ class Question extends Component {
                                         <p>Votos: {element.optionOne.image.votes} </p>
                                         <a onClick={this.voteHandler} name={element._id} option="1">
                                             <img className="img-thumbnail img-fluid" alt="Bootstrap Image Preview"  name={element._id} option="1"
-                                                 src={'../../../../api/src/uploads' + element.optionOne.image}/>
+                                                 src={'http://localhost:3001/img/' + element.optionOne.image}/>
                                         </a>
                                     </span>
                                 </div>
@@ -76,7 +77,7 @@ class Question extends Component {
                                     <p>Votos: {element.optionTwo.image.votes}</p>
                                     <a  onClick={this.voteHandler}>
                                         <img className="img-thumbnail img-fluid" alt="Bootstrap Image Preview"  name={element._id} option="2"
-                                             src={'../../../../api/src/uploads/' + element.optionTwo.image}/>
+                                             src={'http://localhost:3001/img/' + element.optionTwo.image}/>
                                     </a>
                                 </span>
                                 </div>

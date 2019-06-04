@@ -74,6 +74,19 @@ router.put('/:id', async (req, res) => {
     res.json({status: 'Question Updated'});
 });
 
+router.post('/vote:id', async(req, res) => {
+    const { opt } = req.body;
+    const question = Question.findById(req.params.id);
+    var votes = opt == 1? question.optionOne.votes : question.optionTwo.votes;
+    votes++;
+    if (opt == 1 ) {
+        Question.findByIdAndUpdate(req.params.id, {$set: { 'optionOne.votes' : votes}} )
+    } else {
+        Question.findByIdAndUpdate(req.params.id, {$set: { 'optionTwo.votes' : votes}} )
+    }
+    res.json({status: 'Question Updated'});
+}) 
+
 
 router.delete('/:id', async (req, res) => {
     await Question.findByIdAndRemove(req.params.id);
