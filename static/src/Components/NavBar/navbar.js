@@ -12,6 +12,7 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Link from "@material-ui/core/Link";
 import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -63,6 +64,7 @@ function MenuAppBar(props) {
                 </Link>
               )}
               {props.userIsLoged && (
+                  <Tooltip title="Crea nueva pregunta" placement="bottom">
                 <Link component={NavLink} to="/QuestionComponent">
                   <Fab
                     size="small"
@@ -73,6 +75,7 @@ function MenuAppBar(props) {
                     <AddIcon />
                   </Fab>
                 </Link>
+                </Tooltip>
               )}
               <Fab
                 size="small"

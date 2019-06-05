@@ -62,11 +62,7 @@ class Login extends Component {
                     })
                     return this.showMessage('Ha ocurrido un error', 'error')
                 }
-                this.showMessage('Bievenido ' + result.data.username, 'success')
-                this.props.setUserData.setUserData(result.data)
-                this.setState({
-                    route: <Redirect to="/"/>
-                })
+                this.handleLoginRegisterSuccess(result.data);
             })
             .catch(error => {
                 this.setState({
@@ -99,10 +95,7 @@ class Login extends Component {
                         })
                         return this.showMessage('Ha ocurrido un error', 'error')
                     }
-                    this.props.setUserData.setUserData(result.data)
-                    this.setState({
-                        route: <Redirect to="/"/>
-                    })
+                    this.handleLoginRegisterSuccess(result.data);
                 }
             )
             .catch(error => console.log(error))
@@ -112,6 +105,20 @@ class Login extends Component {
         this.setState(prevState => ({
             showLogin: !prevState.showLogin
         }))
+    }
+
+    handleLoginRegisterSuccess(data) {
+        this.showMessage('Bievenido ' + data.username, 'success')
+        this.props.setUserData.setUserData(data)
+        // save on memory the current user
+        var userdata = JSON.stringify(data);
+        localStorage.setItem('user', userdata)
+        
+        setTimeout( () => {
+            this.setState({
+                route: <Redirect to="/"/>
+            })
+        }, 2000)
     }
 
     render () {
