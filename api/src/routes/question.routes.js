@@ -74,15 +74,18 @@ router.put('/:id', async (req, res) => {
     res.json({status: 'Question Updated'});
 });
 
-router.post('/vote:id', async(req, res) => {
-    const { opt } = req.body;
-    const question = Question.findById(req.params.id);
+router.put('/vote/:id/:opt', async(req, res) => {
+    const opt = req.params.opt;
+    const id = req.params.id;
+    const question = await Question.findById(id);
+    console.log("TCL: question", question)
+    
     var votes = opt == 1? question.optionOne.votes : question.optionTwo.votes;
     votes++;
-    if (opt == 1 ) {
-        Question.findByIdAndUpdate(req.params.id, {$set: { 'optionOne.votes' : votes}} )
-    } else {
-        Question.findByIdAndUpdate(req.params.id, {$set: { 'optionTwo.votes' : votes}} )
+    if (opt == 'optionOne' ) {
+        Question.findByIdAndUpdate(id, {$set: { 'optionOne.votes' : votes}} )
+    } else if (opt == 'optionTwo') {
+        Question.findByIdAndUpdate(id, {$set: { 'optionTwo.votes' : votes}} )
     }
     res.json({status: 'Question Updated'});
 }) 

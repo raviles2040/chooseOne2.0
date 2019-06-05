@@ -27,10 +27,12 @@ class Question extends Component {
     voteHandler = (e) => {
         let currentTarget = e.target.name
         let opt = e.target.getAttribute('option') === '1' ? 'optionOne': 'optionTwo';
+        console.log("TCL: Question -> voteHandler -> opt", opt)
+        
         let  questionData = this.state.questions.filter(element => element._id === currentTarget)
 
         questionData[0][opt].votes = questionData[0][opt].votes + 1;
-        axios.put('http://localhost:3001/api/questions/' + currentTarget, opt )
+        axios.put(`http://localhost:3001/api/questions/vote/${currentTarget}/${opt}`)
             .then(
                 result => {
                     debugger;

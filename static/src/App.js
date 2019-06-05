@@ -17,6 +17,17 @@ class App extends Component {
             }
         }
     }
+
+    componentWillMount() {
+        var userdatajson = localStorage.getItem('userdata');
+        userdatajson = JSON.parse(userdatajson);
+
+        if (userdatajson) {
+            this.setUserData(userdatajson);
+        }
+
+    }
+
     setUserData = (currentUser) => {
         this.setState({
             userData:currentUser
@@ -30,6 +41,7 @@ class App extends Component {
             userData: {username: ''}
         })
         callback();
+        localStorage.removeItem('userdata');
     };
     render() {
         let userIsLoged = this.state.userData.username !== '';

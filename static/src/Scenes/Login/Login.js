@@ -112,7 +112,7 @@ class Login extends Component {
         this.props.setUserData.setUserData(data)
         // save on memory the current user
         var userdata = JSON.stringify(data);
-        localStorage.setItem('user', userdata)
+        localStorage.setItem('userdata', userdata)
         
         setTimeout( () => {
             this.setState({
