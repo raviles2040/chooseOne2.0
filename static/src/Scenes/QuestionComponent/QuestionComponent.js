@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {SnackbarProvider, withSnackbar} from "notistack";
 
 class QuestionComponent extends Component {
     constructor(props) {
@@ -31,7 +32,7 @@ submitHandle = (e)=>{
             image: this.state.img2.props.src,
             votes: this.state.votes
         },
-        createdBy: this.props.getUserData()._id
+        createdBy: this.setUserData.props.getUserData()._id
     }
     axios.post('http://localhost:3001/api/questions', data)
         .then(res => {
@@ -46,12 +47,13 @@ submitHandle = (e)=>{
                 img1: <img alt="" height="320" width="300" id="img1" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
                 img2: <img alt="" height="320" width="300" id="img2" src="https://www.grandjunctionmartialarts.com/wp-content/uploads/2017/04/default-image.jpg"/>,
                 votes: 0
-            })
+            });
+            this.showMessage("Se ha creado la pregunta de manera correcta", 'success');
         })
         .catch(err => {
+            this.showMessage("Ha ocurrido un error", 'error');
         console.log(err);  
-    })
-    alert('¡PREGUNTA ENVIADA CON ÉXITO!');
+    });
 };
 
 saveImage = (option, id,file) => {
@@ -73,6 +75,10 @@ handleChange(e) {
     this.setState({
         [name]: value
     })
+}
+
+showMessage = (message, type) => {
+    this.props.enqueueSnackbar(message, {variant: type})
 }
 
 readImage = e => {
@@ -163,4 +169,17 @@ readImage = e => {
     }
 }
 
-export default QuestionComponent
+
+
+
+const MySceneQuestion = withSnackbar(QuestionComponent)
+
+function IntegrationNotistack (props) {
+    return (
+        <SnackbarProvider maxSnack={8}>
+            <MySceneQuestion setUserData={props}/>
+        </SnackbarProvider>
+    )
+}
+
+export default IntegrationNotistack
