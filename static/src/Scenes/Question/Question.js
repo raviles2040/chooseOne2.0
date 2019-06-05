@@ -67,7 +67,7 @@ class Question extends Component {
                             <div className="row">
                                 <div className="col-md-6">
                                     <span>
-                                        <p>Votos: {element.optionOne.image.votes} </p>
+                                        <p>Votos: {element.optionOne.votes} </p>
                                         <a onClick={this.voteHandler} name={element._id} option="1">
                                             <img className="img-thumbnail img-fluid" alt="Bootstrap Image Preview"  name={element._id} option="1"
                                                  src={'http://localhost:3001/img/' + element.optionOne.image}/>
@@ -76,7 +76,7 @@ class Question extends Component {
                                 </div>
                                 <div className="col-md-6">
                                 <span>
-                                    <p>Votos: {element.optionTwo.image.votes}</p>
+                                    <p>Votos: {element.optionTwo.votes}</p>
                                     <a  onClick={this.voteHandler}>
                                         <img className="img-thumbnail img-fluid" alt="Bootstrap Image Preview"  name={element._id} option="2"
                                              src={'http://localhost:3001/img/' + element.optionTwo.image}/>
