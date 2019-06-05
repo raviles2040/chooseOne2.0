@@ -81,13 +81,16 @@ router.put('/vote/:id/:opt', async(req, res) => {
     console.log("TCL: question", question)
     
     var votes = opt == 1? question.optionOne.votes : question.optionTwo.votes;
-    votes++;
+    votates = votes++;
     if (opt == 'optionOne' ) {
-        Question.findByIdAndUpdate(id, {$set: { 'optionOne.votes' : votes}} )
+        var questionUpdated = await Question.findByIdAndUpdate(id, {$set: { 'optionOne.votes' : votes}} )
     } else if (opt == 'optionTwo') {
-        Question.findByIdAndUpdate(id, {$set: { 'optionTwo.votes' : votes}} )
+        var questionUpdated = await Question.findByIdAndUpdate(id, {$set: { 'optionTwo.votes' : votes}} )
     }
-    res.json({status: 'Question Updated'});
+    res.json({
+        status: 'Question Updated',
+        data : questionUpdated
+    });
 }) 
 
 
