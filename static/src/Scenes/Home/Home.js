@@ -5,7 +5,7 @@ export default class Home extends React.Component {
     render() {
 
       return (
-        <div className="container-fluid mt-3">
+        <div className="container-fluid mt-5 mb-5">
             <div className="row">
                 <div className="col-2"></div>
                 <div className="col-8">
